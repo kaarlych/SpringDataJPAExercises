@@ -11,8 +11,5 @@ public class EmployeeRunner {
         EmployeeService employeeService = context.getBean(EmployeeService.class);
         employeeService.checkTransactionalSuccess();
         employeeService.checkTransactionalFailure();
-
-        System.out.println("dupa");
-        System.out.println("duoa2");
     }
 }
