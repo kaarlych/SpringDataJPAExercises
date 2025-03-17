@@ -13,5 +13,6 @@ public class EmployeeRunner {
         employeeService.checkTransactionalFailure();
 
         System.out.println("dupa");
+        System.out.println("duoa2");
     }
 }
