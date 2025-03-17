@@ -10,6 +10,6 @@ public class EmployeeRunner {
                 = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
         EmployeeService employeeService = context.getBean(EmployeeService.class);
         employeeService.checkTransactionalSuccess();
-        employeeService.checkTransactionalFailure();
+//        employeeService.checkTransactionalFailure();
     }
 }
