@@ -82,6 +82,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <version>${postgresql-driver.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
@@ -109,17 +114,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>${flyway.version}</version>
-                <configuration>
-                    <configFiles>src/main/resources/flyway/flyway.conf</configFiles>
-                    <locations>
-                        <location>filesystem:src/main/resources/flyway/migrations</location>
-                    </locations>
                 </configuration>
             </plugin>
         </plugins>

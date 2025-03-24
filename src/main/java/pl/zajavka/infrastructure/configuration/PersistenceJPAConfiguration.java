@@ -2,8 +2,12 @@ package pl.zajavka.infrastructure.configuration;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.AllArgsConstructor;
+import org.flywaydb.core.Flyway;
+import org.flywaydb.core.api.Location;
+import org.flywaydb.core.api.configuration.ClassicConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -31,6 +35,7 @@ public class PersistenceJPAConfiguration {
     private final Environment environment;
 
     @Bean
+    @DependsOn("flyway")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean
                 = new LocalContainerEntityManagerFactoryBean();
@@ -57,6 +62,7 @@ public class PersistenceJPAConfiguration {
         dataSource.setUrl(environment.getProperty("jdbc.url"));
         dataSource.setUsername(environment.getProperty("jdbc.user"));
         dataSource.setPassword(environment.getProperty("jdbc.pass"));
+        dataSource.setSchema("employee_flyway");
         return dataSource;
     }
 
@@ -72,5 +78,14 @@ public class PersistenceJPAConfiguration {
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+    @Bean(initMethod = "migrate")
+    Flyway flyway() {
+        ClassicConfiguration configuration = new ClassicConfiguration();
+        configuration.setBaselineOnMigrate(true);
+        configuration.setLocations(new Location("filesystem:src/main/resources/flyway/migrations"));
+        configuration.setDataSource(dataSource());
+        return new Flyway(configuration);
     }
 }
