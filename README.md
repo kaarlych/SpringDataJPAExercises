@@ -74,4 +74,16 @@ to jest baza danych z ktorej korzysta aplikacja na produkcji oraz klienci aplika
 - biblioteka testcontainers - umozliwia takie cos
 - wyizolowany postgres podnoszony tylko na ptorzeby testow
 - tymczasowy postgres ma sie nijak do normalnego postgresa
-- 
+
+### testcontainers
+- Docker container
+- Docker - lekka maszyba wirtualna na ktorej mozna uruchomic rozne aplikacje
+- maszyna wirtualna - mini komputer w komputerze, zagniezdzony system operacyjny
+na naszym systemie operacyjnym. Przykladowo zamiast instalowac ubuntu obok windowsa mozna 
+wykorzystac maszyne wirtualna aby uruchomic ubuntu. Ubuntu traktowane jest wtedy jak program.
+A docker to wlasnie taka lekka maszyna wirtualna.
+- mini system operacyjny z ktorego wyciete zostaly nieistotne funkcje i na tym mini systemie
+zostala zainstalowana technologia ktorej ptorzebuje. 
+- Docker to taka matrioszka.
+- osiagamy dzieki temu izolacje z h2 oraz prawdziwego postgresa z podejscia drugiego
+- hybryda zalet poprzednich podejsc 
