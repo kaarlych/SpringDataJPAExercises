@@ -62,7 +62,6 @@ public class PersistenceJPAConfiguration {
         dataSource.setUrl(environment.getProperty("jdbc.url"));
         dataSource.setUsername(environment.getProperty("jdbc.user"));
         dataSource.setPassword(environment.getProperty("jdbc.pass"));
-        dataSource.setSchema("employee_flyway");
         return dataSource;
     }
 

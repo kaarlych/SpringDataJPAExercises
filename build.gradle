@@ -36,6 +36,7 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
     testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
     testImplementation "org.springframework:spring-test:$springVersion"
+    testImplementation "com.h2database:h2:$h2Version"
 }
 
 test {
